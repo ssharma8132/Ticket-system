@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="col-sm-12" style="margin-top:1em;">
+    <div class="row">
+        <form action="{% url 'search-ticket' %}" method="post" class="search-form">
+            {% csrf_token %}
+            <div class="col-xs-4">
+                <select name="stage" class="form-control">
+                        <option>Select Stage</option>
+                        <option value="To Do" {% if stage == 'To Do' %} selected="selected" {% endif %}>To Do</option>
+                        <option value="Open" {% if stage == 'Open' %} selected="selected" {% endif %}>Open</option>
+                        <option value ="Resolved" {% if stage == 'Resolved' %} selected="selected" {% endif %}>Resolved</option>
+                        <option value="Testing" {% if stage == 'Testing' %} selected="selected" {% endif %}>Testing</option>
+                        <option value="Testing Failed" {% if stage == 'Testing Failed' %} selected="selected" {% endif %}>Testing Failed</option>
+                        <option value="Testing Passed" {% if stage == 'Testing Passed' %} selected="selected" {% endif %}>Testing Passed</option>
+                        <option value="Closed" {% if stage == 'Closed' %} selected="selected" {% endif %}>Closed</option>
+                </select>
+            </div>
+            
+            <div class="col-xs-4">
+                <select name="category" class="form-control"> 
+                        <option value="">Select Category</option>
+                        {% if categories %}
+                                {% for category in categories %}
+                                        {% if category.id == category_id %}
+                                                <option value="{{ category.id }}" selected="selected">{{ category.name }}</option>
+                                        {% else %}
+                                                <option value="{{ category.id }}">{{ category.name }}</option>
+                                        {% endif %}
+                                {% endfor %}
+                        {% else %}
+                                <option>No Categories available.</option>
+                        {% endif %}
+                </select>
+            </div>
+            <div class="col-xs-4">
+                <input type="submit" value="Search Ticket" class="btn btn-submit">
+            </div>
+
+        </form>
+	</div>
+</div>
+{% if tickets %}
+	<table class="table table-bordered">
+		<tr>
+			<th>Id</th>
+			<th>Title</th>
+			<th>Description</tj>
+			<th>Stage</th>
+			<th>Category</th>
+			<th>Created Date</th>
+			<th>Action</th>
+		</tr>
+	{% for ticket in tickets %}
+		<tr>
+			<td>{{ ticket.id }}</td>
+			<td>{{ ticket.title }}</td>
+			<td>{{ ticket.description }}</td>
+			<td>{{ ticket.stage }}</td>
+			<td>{{ ticket.category.name }}</td>
+			<td>{{ ticket.created_date }}</td>
+			<td>
+				<a href="{% url 'index' %}?id={{ ticket.id }}&action=delete"><button type="button" class="btn btn-danger">Delete</button></a>
+				<a href="{% url 'update-ticket' %}?id={{ ticket.id }}"><button type="button" class="btn btn-success">Update</button></a>
+			</td>
+		</tr>
+	{% endfor %}
+	</table>
+{% else %}
+	<p>No Tickets available.</p>
+{% endif %}
+
+{% endblock %}

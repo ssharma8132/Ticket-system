@@ -1,0 +1,215 @@
+body,div{
+        padding: 0;
+        margin: 0;
+}
+/* Style for User Panel starts here */
+.main_header
+{
+        width: 100%;
+        background-color: #547980;
+		height: 4em;
+		margin-bottom: 15px;
+        vertical-align: middle;
+}
+
+.main_header h2{
+		margin-top: 10px; 
+		float: right;
+}
+
+.toggle-btn{
+	font-size: 30px;
+    float: left;
+    cursor: pointer;
+    padding: 7px;
+}
+
+.main_footer
+{
+        width: 100%;
+        background-color: #547980;
+        height: 2em;
+        vertical-align: middle;
+        text-align: center;
+        line-height: 2em;
+        color: #fff;
+}
+
+.header_right
+{
+        color: #fff;
+        float: right;
+        height: inherit;
+        padding-right: 3em;
+        vertical-align: middle;
+        line-height: 3em;
+}
+
+.header_left
+{
+        height: inherit;
+        color: #fff;
+        padding-left: 10px;
+        float: left;
+        line-height: 3em;
+        vertical-align: middle;
+}
+
+#left-navigation
+{
+        border-right: 1px;
+        border-right-style: solid;
+        border-color: #547980;
+        color: #594F4F;
+}
+
+#left-navigation a
+{
+                text-decoration: none;
+                color: inherit;
+                width: 100%;
+}
+
+#left-navigation ul li
+{
+        width: 100%;
+        border-bottom: 1px;
+        border-bottom-style: solid;
+        border-color: #547980;
+        color: #594F4F;
+        font-size: 16px;
+        height: 3em;
+        line-height: 3em;
+        background-color: #E8EAEB;
+        padding-left: 0.5em;
+}
+
+#left-navigation ul li:hover
+{
+        background-color: #9DE0AD;
+        color: #fff;
+        cursor: pointer;
+}
+
+.active
+{
+        background-color: #9DE0AD !important;
+        color: #fff !important;
+}
+
+.link
+{
+        text-decoration: none;
+        color: inherit;
+}
+
+.link:hover
+{
+        text-decoration: none;
+        color: inherit;
+}
+
+.dashboard_credit_header
+{
+        width: 100%;
+        background-color: #E8EAEB;
+        height: 2em;
+        line-height: 2em;
+        margin: 0 !important;
+        padding-left: 1em;
+}
+
+.dashboard_credit_body
+{
+        width: 100%;
+        line-height: 2em;
+        padding-left: 1em;
+}
+
+#credit_history, #recent_messages
+{
+        border: 1px;
+        border-style: solid;
+        border-color: #547980;
+        padding: 0;
+}
+
+#contact_info
+{
+        border: 1px;
+        border-style: solid;
+        border-color: #547980;
+        padding: 0;
+        margin-left: 1em;
+
+}
+
+input.btn.btn-submit {
+    text-transform: uppercase;
+    background: #537880;
+    color: #fff;
+}
+
+.search-form{
+	margin-bottom: 20px;
+	width: 100%;
+	float: left;
+}
+
+
+.main-footer {
+	background: #537880;
+	padding: 10px;
+	text-align: center;
+	color: #fff;
+
+}
+
+@media screen and (min-width: 768px) {
+	.main-footer {
+		position: fixed;
+		width: 100%;
+		bottom: 0;
+	
+	}
+}
+
+/* side nav */
+			.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}

@@ -1,0 +1,43 @@
+<html>
+<head>
+    {% block head %}
+    {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'tickets/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'tickets/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'tickets/bootstrap.min.js' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    {% endblock %}
+    </head>
+<body>
+    <div class="main_header">
+        <div class="header_left">
+            <h2>Ticket System</h2>
+            <span class="toggle-btn" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+        </div>
+    </div>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a class="nav-link" href="{% url 'index' %}"> Home </a>
+        <a class="nav-link" href="{% url 'create-ticket' %}">Create Ticket</a>
+        <a class="nav-link" href="{% url 'search-ticket' %}">Search Ticket</a>
+    </div>
+    <script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "350px";
+    }
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+    </script>
+    <div class="container">
+    
+    {% block body %}
+    
+    {% endblock %}
+    </div>
+    <div class="main-footer">
+        <p>@Copyright 2019</p>
+    </div>
+</body>
+</html>

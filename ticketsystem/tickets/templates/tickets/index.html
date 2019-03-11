@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body %}
+                        
+{% if tickets %}
+	<table class="table table-bordered table-responsive">
+		<tr>
+			<th>Id</th>
+			<th>Title</th>
+			<th>Description</tj>
+			<th>Stage</th>
+			<th>Category</th>
+			<th>Created Date</th>
+			<th>Action</th>
+		</tr>
+		{% for ticket in tickets %}
+		<tr>
+			<td>{{ ticket.id }}</td>
+			<td>{{ ticket.title }}</td>
+			<td>{{ ticket.description }}</td>
+			<td>{{ ticket.stage }}</td>
+			<td>{{ ticket.category.name }}</td>
+			<td>{{ ticket.created_date }}</td>
+			<td>
+				<a href="{% url 'index' %}?id={{ ticket.id }}&action=delete"><button type="button" class="btn btn-danger">Delete</button></a>
+				<a href="{% url 'update-ticket' %}?id={{ ticket.id }}"><button type="button" class="btn btn-success">Update</button></a>
+			</td>
+		</tr>
+	{% endfor %}
+	</table>
+	{% else %}
+	<p>No Tickets available.</p>
+	{% endif %}
+{% endblock %}

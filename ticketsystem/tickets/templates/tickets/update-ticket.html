@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}    
+<div class="col-sm-12" style="margin-top:1em;">
+    <div class="row">
+        {% if isUpdated %}
+        <p>Ticket updated successfully! </p>
+        {% endif %}
+        <form action="{% url 'update-ticket' %}" method="post" class="col-md-4 col-md-offset-4">
+            {% csrf_token %}
+            Title: <input type="text" name="title" value="{{ ticket.title }}" class="form-control"><br>
+            Description: <input type="text" name="description" value="{{ ticket.description }}" class="form-control"><br>
+            <input type="hidden" name="id" value="{{ id }}">
+            Stage:
+            <select name="stage" class="form-control">
+                <option>Select Stage</option>
+                <option value="To Do" {% if ticket.stage == 'To Do' %} selected="selected" {% endif %}>To Do</option>
+                <option value="Open" {% if ticket.stage == 'Open' %} selected="selected" {% endif %}>Open</option>
+                <option value ="Resolved" {% if ticket.stage == 'Resolved' %} selected="selected" {% endif %}>Resolved</option>
+                <option value="Testing" {% if ticket.stage == 'Testing' %} selected="selected" {% endif %}>Testing</option>
+                <option value="Testing Failed" {% if ticket.stage == 'Testing Failed' %} selected="selected" {% endif %}>Testing Failed</option>
+                <option value="Testing Passed" {% if ticket.stage == 'Testing Passed' %} selected="selected" {% endif %}>Testing Passed</option>
+                <option value="Closed" {% if ticket.stage == 'Closed' %} selected="selected" {% endif %}>Closed</option>
+            </select><br>
+            Category: 
+            <select name="category" class="form-control">
+                <option value="">Select Category</option>
+                {% if categories %}
+                {% for category in categories %}
+                {% if category.id == ticket.category.id %}
+                <option value="{{ category.id }}" selected="selected">{{ category.name }}</option>
+                {% else %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endif %}
+                {% endfor %}
+                {% else %}
+                <option>No Categories available.</option>
+                {% endif %}
+            </select><br>
+            <input type="submit" value="Update Ticket" class="btn btn-submit">	
+        </form>
+    </div>
+</div>
+{% endblock %}
